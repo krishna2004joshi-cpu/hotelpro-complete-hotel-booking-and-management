@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#152d29" />
+    <meta name="description" content="HotelPro keeps your hotel operations, reservations, and guest experience in one calm, clear workspace." />
+    <title>HotelPro — Hotel operations, in good hands</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="#dashboard" aria-label="HotelPro dashboard">
+          <span class="brand-mark"><svg viewBox="0 0 36 36" aria-hidden="true"><path d="M7 28V9h5v7h12V9h5v19h-5v-7H12v7z"/><circle cx="18" cy="6.5" r="2.2"/></svg></span>
+          <span class="brand-name">hotel<span>pro</span></span>
+        </a>
+
+        <div class="property-switcher">
+          <div class="property-thumb">MV</div>
+          <div class="property-copy"><strong>Maison Verdan</strong><span>Paris, France</span></div>
+          <button class="icon-button property-more" aria-label="Switch property"><svg viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></svg></button>
+        </div>
+
+        <p class="nav-label">WORKSPACE</p>
+        <nav class="primary-nav" aria-label="Main navigation">
+          <button class="nav-item active" data-page="overview"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="5" rx="1.5"/><rect x="13.5" y="11.5" width="7" height="9" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/></svg><span>Overview</span></button>
+          <button class="nav-item" data-page="reservations"><svg viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="15" rx="2"/><path d="M7.5 3.5v4M16.5 3.5v4M3.5 10h17M8 14h3M8 17h7"/></svg><span>Reservations</span><span class="nav-count" id="reservationNavCount">8</span></button>
+          <button class="nav-item" data-page="rooms"><svg viewBox="0 0 24 24"><path d="M3.5 19.5v-12a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2v12M3.5 15.5h17M7.5 11.5h4v4h-4zM13.5 11.5h4v4h-4zM6 19.5v-2M18 19.5v-2"/></svg><span>Rooms &amp; rates</span></button>
+          <button class="nav-item" data-page="guests"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.8 20a6.2 6.2 0 0 1 12.4 0M16 5.5a3.5 3.5 0 0 1 0 6.9M17.1 14a5.3 5.3 0 0 1 4.1 5.2"/></svg><span>Guests</span></button>
+          <a class="nav-item booking-nav-link" href="book.html"><svg viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5v9a1 1 0 0 1-1 1h-5v-6h-4v6H5a1 1 0 0 1-1-1z"/><path d="M9.5 9h5"/></svg><span>Booking website</span><span class="launch-mark">↗</span></a>
+        </nav>
+
+        <p class="nav-label nav-label-spaced">INSIGHTS</p>
+        <nav class="primary-nav" aria-label="Insights">
+          <button class="nav-item" data-page="reports"><svg viewBox="0 0 24 24"><path d="M4 19.5h16M6.5 16V10M12 16V5M17.5 16v-4"/></svg><span>Reports</span></button>
+          <button class="nav-item" data-page="inbox"><svg viewBox="0 0 24 24"><path d="M4 5.5h16v13H4zM4 13h4l1.5 2h5L16 13h4M8 9h8"/></svg><span>Guest inbox</span><span class="unread-dot"></span></button>
+        </nav>
+
+        <div class="sidebar-spacer"></div>
+        <div class="help-card">
+          <div class="help-spark">✦</div>
+          <strong>Here when you need us</strong>
+          <p>Our hospitality team is one message away.</p>
+          <button id="supportButton">Talk to support <span>↗</span></button>
+        </div>
+        <button class="nav-item settings-link" data-page="settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.2 13.5a7.6 7.6 0 0 0 0-3l1.7-1.3-1.7-3-2 .8a7.8 7.8 0 0 0-2.6-1.5L14.3 3h-3.5l-.3 2.5a7.8 7.8 0 0 0-2.6 1.5l-2-.8-1.7 3L6 10.5a7.6 7.6 0 0 0 0 3l-1.7 1.3 1.7 3 2-.8a7.8 7.8 0 0 0 2.6 1.5l.3 2.5h3.5l.3-2.5a7.8 7.8 0 0 0 2.6-1.5l2 .8 1.7-3z"/></svg><span>Settings</span></button>
+        <div class="user-profile">
+          <div class="avatar avatar-user">AL</div><div class="user-copy"><strong>Alex Laurent</strong><span>General manager</span></div><button class="icon-button profile-more" aria-label="Profile menu">···</button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <button class="mobile-menu icon-button" id="mobileMenu" aria-label="Open menu"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+          <div class="breadcrumb"><span>Maison Verdan</span><span class="crumb-slash">/</span><strong id="breadcrumbCurrent">Overview</strong></div>
+          <div class="topbar-actions">
+            <div class="date-context"><span class="live-pip"></span><span>Today, <strong id="currentDate"></strong></span></div>
+            <button class="icon-button notification-button" id="notificationButton" aria-label="Notifications"><svg viewBox="0 0 24 24"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg><i></i></button>
+            <button class="top-avatar" aria-label="Alex Laurent profile">AL</button>
+          </div>
+        </header>
+
+        <div class="page-wrap">
+          <section class="welcome-row">
+            <div><p class="eyebrow" id="welcomeDate">THURSDAY, OCTOBER 29, 2026</p><h1 id="pageTitle">Good morning, Alex <span class="wave">✳</span></h1><p class="welcome-subtitle" id="pageSubtitle">Here’s what’s happening at your hotel today.</p></div>
+            <button class="primary-button" id="newBookingButton"><span class="plus">+</span> New reservation</button>
+          </section>
+
+          <section class="metric-grid" aria-label="Today's hotel metrics">
+            <article class="metric-card"><div class="metric-top"><span class="metric-label">Occupancy</span><span class="metric-icon occupancy-icon"><svg viewBox="0 0 24 24"><path d="M4 19V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v11M4 14h16M8 10h3v4H8zM14 10h3v4h-3z"/></svg></span></div><div class="metric-value"><strong id="occupancyValue">82%</strong><span class="trend positive">↗ 6.4%</span></div><div class="metric-foot"><div class="mini-meter"><span style="width:82%"></span></div><span>41 of 50 rooms</span></div></article>
+            <article class="metric-card"><div class="metric-top"><span class="metric-label">In-house guests</span><span class="metric-icon guests-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M16 5a3 3 0 0 1 0 6M17 14a5 5 0 0 1 4 5"/></svg></span></div><div class="metric-value"><strong id="guestsValue">68</strong><span class="trend neutral">On property</span></div><div class="metric-foot"><div class="face-stack"><span class="face f1">JM</span><span class="face f2">SK</span><span class="face f3">+</span></div><span>12 arrivals expected</span></div></article>
+            <article class="metric-card"><div class="metric-top"><span class="metric-label">Revenue today</span><span class="metric-icon revenue-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18M17 7.5c0-1.4-1.9-2.5-4.5-2.5S8 6.1 8 7.5s1.9 2.5 4.5 2.5S17 11.1 17 12.5s-1.9 2.5-4.5 2.5S8 13.9 8 12.5"/></svg></span></div><div class="metric-value"><strong id="revenueValue">€12,480</strong><span class="trend positive">↗ 12.8%</span></div><div class="metric-foot"><span>vs. €11,050 last Thursday</span><span class="metric-note-dot">•</span><span class="muted">+€1,430</span></div></article>
+            <article class="metric-card"><div class="metric-top"><span class="metric-label">Average daily rate</span><span class="metric-icon rate-icon"><svg viewBox="0 0 24 24"><path d="m4 17 5-5 3.5 3.5L20 8M14.5 8H20v5.5"/></svg></span></div><div class="metric-value"><strong id="adrValue">€218</strong><span class="trend positive">↗ 3.2%</span></div><div class="metric-foot"><span>Across all occupied rooms</span><span class="rate-badge">ADR</span></div></article>
+          </section>
+
+          <section class="dashboard-grid">
+            <article class="panel revenue-panel">
+              <div class="panel-heading"><div><p class="panel-overline">PERFORMANCE</p><h2>Revenue overview</h2></div><div class="select-wrap"><select id="revenuePeriod" aria-label="Revenue chart period"><option value="week">This week</option><option value="month">This month</option></select><svg viewBox="0 0 24 24"><path d="m7 10 5 5 5-5"/></svg></div></div>
+              <div class="revenue-total"><strong id="chartTotal">€68,240</strong><span class="trend positive">↗ 8.2%</span><span class="muted">vs. previous period</span></div>
+              <div class="chart-wrap"><div class="chart-y-labels"><span>€15k</span><span>€10k</span><span>€5k</span><span>€0</span></div><div class="chart-main"><div class="chart-gridlines"><i></i><i></i><i></i><i></i></div><svg class="revenue-chart" viewBox="0 0 700 190" preserveAspectRatio="none" role="img" aria-label="Revenue trend chart"><defs><linearGradient id="areaFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#5e9b7f" stop-opacity=".2"/><stop offset="100%" stop-color="#5e9b7f" stop-opacity="0"/></linearGradient></defs><path class="chart-area" d="M0 132 C35 119 49 111 78 119 S123 146 157 110 S210 94 236 105 S279 119 315 85 S368 69 394 86 S438 97 472 66 S522 88 552 59 S611 42 631 56 S674 39 700 24 V190 H0Z"/><path class="chart-line" d="M0 132 C35 119 49 111 78 119 S123 146 157 110 S210 94 236 105 S279 119 315 85 S368 69 394 86 S438 97 472 66 S522 88 552 59 S611 42 631 56 S674 39 700 24"/><circle cx="700" cy="24" r="5" class="chart-end"/></svg><div class="chart-x-labels" id="chartLabels"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div></div></div>
+              <div class="chart-legend"><span><i class="legend-current"></i> This week</span><span><i class="legend-previous"></i> Last week</span><span class="chart-caption">Updated 5 min ago</span></div>
+            </article>
+
+            <article class="panel arrivals-panel">
+              <div class="panel-heading"><div><p class="panel-overline">FRONT DESK</p><h2>Today at a glance</h2></div><button class="text-button" data-navigate="reservations">View all <span>→</span></button></div>
+              <div class="arrival-summary"><div class="arrival-stat"><span class="arrival-symbol arrival-in">↓</span><div><strong>12</strong><span>Arrivals</span></div></div><div class="summary-divider"></div><div class="arrival-stat"><span class="arrival-symbol arrival-out">↑</span><div><strong>8</strong><span>Departures</span></div></div></div>
+              <div class="occupancy-block"><div class="occupancy-heading"><span>Room occupancy</span><strong>82%</strong></div><div class="occupancy-track"><span></span></div><div class="occupancy-labels"><span>41 occupied</span><span>9 available</span></div></div>
+              <div class="desk-note"><span class="desk-note-icon">✦</span><p><strong>Looking good.</strong> 3 rooms are ready for early check-in.</p></div>
+              <button class="secondary-button full-button" data-navigate="rooms">Open room overview <span>→</span></button>
+            </article>
+          </section>
+
+          <section class="panel reservations-panel" id="recentReservations">
+            <div class="panel-heading reservations-heading"><div><p class="panel-overline">THE LATEST</p><h2>Recent reservations <span class="table-count" id="tableCount">8</span></h2></div><div class="table-actions"><label class="search-box"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input id="reservationSearch" type="search" placeholder="Search guests" aria-label="Search reservations" /></label><button class="filter-button" id="filterButton"><svg viewBox="0 0 24 24"><path d="M4 6h16M7 12h10m-7 6h4"/></svg><span>Filter</span><i id="activeFilterDot"></i></button><button class="text-button all-reservations" data-navigate="reservations">All reservations <span>→</span></button></div></div>
+            <div class="table-scroll"><table><thead><tr><th>GUEST</th><th>ROOM</th><th>DATES</th><th>CHANNEL</th><th>STATUS</th><th>AMOUNT</th><th></th></tr></thead><tbody id="reservationRows"></tbody></table></div>
+            <div class="table-footer"><span id="tableFootText">Showing 8 of 146 reservations</span><div class="pagination"><button aria-label="Previous page" disabled>‹</button><button class="page-current">1</button><button>2</button><button>3</button><span>…</span><button>19</button><button aria-label="Next page">›</button></div></div>
+          </section>
+
+          <footer class="page-footer"><span>© 2026 HotelPro</span><span>Made for the moments that matter.</span><a href="#help" id="helpLink">Help center <span>↗</span></a></footer>
+        </div>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"><span class="toast-check">✓</span><span id="toastMessage">Done</span></div>
+    <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+      <section class="booking-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-heading"><div><p class="panel-overline">FRONT DESK</p><h2 id="modalTitle">New reservation</h2></div><button class="icon-button close-modal" id="closeModal" aria-label="Close"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+        <p class="modal-intro">Add a guest stay to your property.</p>
+        <form id="bookingForm">
+          <label class="form-field full-field"><span>Guest name</span><input name="guest" required placeholder="e.g. Camille Martin" autocomplete="name" /></label>
+          <div class="form-row"><label class="form-field"><span>Room</span><select name="room" required><option value="204 · Deluxe">204 · Deluxe</option><option value="108 · Classic">108 · Classic</option><option value="312 · Suite">312 · Suite</option><option value="205 · Deluxe">205 · Deluxe</option><option value="110 · Classic">110 · Classic</option></select></label><label class="form-field"><span>Booking channel</span><select name="channel"><option>Direct</option><option>Booking.com</option><option>Expedia</option><option>Phone</option></select></label></div>
+          <div class="form-row"><label class="form-field"><span>Check-in</span><input name="checkin" type="date" required /></label><label class="form-field"><span>Check-out</span><input name="checkout" type="date" required /></label></div>
+          <div class="form-row"><label class="form-field"><span>Guests</span><select name="party"><option>2 guests</option><option>1 guest</option><option>3 guests</option><option>4 guests</option></select></label><label class="form-field"><span>Total amount</span><div class="amount-input"><span>€</span><input name="amount" type="number" min="0" value="436" required /></div></label></div>
+          <div class="modal-actions"><button type="button" class="secondary-button" id="cancelBooking">Cancel</button><button type="submit" class="primary-button">Save reservation <span>→</span></button></div>
+        </form>
+      </section>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

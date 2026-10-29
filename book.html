@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#18332d" />
+    <meta name="description" content="Book a thoughtful stay at Maison Verdan, a boutique hotel in the heart of Paris." />
+    <title>Book your stay — Maison Verdan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="booking.css" />
+  </head>
+  <body class="booking-page">
+    <header class="guest-header">
+      <a class="guest-brand" href="book.html" aria-label="Maison Verdan home"><span class="guest-brand-mark">M</span><span>MAISON <b>VERDAN</b></span></a>
+      <nav><a href="#rooms">The rooms</a><a href="#details">Our story</a></nav>
+      <a class="ops-link" href="index.html"><span>HotelPro</span> <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main class="guest-wrap">
+      <section class="guest-hero">
+        <div class="hero-copy">
+          <p class="guest-eyebrow"><span></span> A BOUTIQUE STAY IN PARIS</p>
+          <h1>A little Paris,<br /><em>all your own.</em></h1>
+          <p class="hero-description">A warm welcome on a quiet street. Make yourself at home at Maison Verdan.</p>
+          <div class="hero-details"><span><b>⌖</b> 9th arrondissement, Paris</span><i></i><span><b>✦</b> 4.9 <small>from 840+ stays</small></span></div>
+        </div>
+        <div class="hero-art" aria-hidden="true"><div class="art-sun"></div><div class="art-building"><div class="building-roof"></div><div class="building-cornice"></div><div class="building-floor"><i></i><i></i><i></i><i></i></div><div class="building-floor"><i></i><i></i><i></i><i></i></div><div class="building-floor last-floor"><i></i><i></i><i></i><i></i></div><div class="building-door"></div></div><div class="art-plant plant-left">♧</div><div class="art-plant plant-right">♧</div><div class="art-placard">MAISON<br /><b>VERDAN</b></div></div>
+        <div class="hero-caption"><span>48°52' N &nbsp; 2°20' E</span><span>EST. 1924</span></div>
+      </section>
+
+      <section class="search-panel" aria-label="Search room availability">
+        <div class="search-intro"><span class="search-spark">✳</span><div><strong>Your stay starts here</strong><span>Find a little room to breathe.</span></div></div>
+        <form id="availabilityForm" class="availability-form">
+          <label><span>CHECK IN</span><input type="date" name="checkin" required /></label>
+          <span class="date-arrow">→</span>
+          <label><span>CHECK OUT</span><input type="date" name="checkout" required /></label>
+          <label class="guest-select"><span>GUESTS</span><select name="guests"><option value="2">2 guests</option><option value="1">1 guest</option><option value="3">3 guests</option><option value="4">4 guests</option></select></label>
+          <button type="submit" class="find-button">Find a room <span>→</span></button>
+        </form>
+      </section>
+
+      <section class="rooms-section" id="rooms">
+        <div class="section-heading"><div><p class="guest-overline">A ROOM TO CALL YOURS</p><h2>Find your favourite</h2><p id="availabilitySummary">Thoughtful details, soft linen, and a little more room to unwind.</p></div><div class="guest-proof"><span class="proof-stars">★★★★★</span><span><b>4.9 / 5</b><small>Guest favourite in Paris</small></span></div></div>
+        <div class="room-card-grid" id="guestRoomResults">
+          <article class="guest-room-card" data-room="classic"><div class="room-illustration classic-art"><span class="art-label">THE CLASSIC</span><div class="art-bed"><i></i><b></b></div><div class="art-lamp"></div><div class="art-window"></div></div><div class="guest-room-info"><div><span class="room-kicker">A QUIET RETREAT</span><h3>Classic room</h3><p>Queen bed · courtyard view · 21 m²</p></div><div class="room-price"><strong>€164</strong><span>per night</span></div></div><div class="room-card-bottom"><span>Free cancellation · Breakfast optional</span><button class="choose-room" data-room-id="classic">Choose room <span>→</span></button></div></article>
+          <article class="guest-room-card" data-room="deluxe"><div class="room-illustration deluxe-art"><span class="art-label">MOST LOVED</span><div class="art-bed"><i></i><b></b></div><div class="art-lamp"></div><div class="art-window"></div><div class="art-chair"></div></div><div class="guest-room-info"><div><span class="room-kicker">A LITTLE EXTRA SPACE</span><h3>Verdan deluxe</h3><p>King bed · balcony · 29 m²</p></div><div class="room-price"><strong>€218</strong><span>per night</span></div></div><div class="room-card-bottom"><span>Free cancellation · Breakfast optional</span><button class="choose-room" data-room-id="deluxe">Choose room <span>→</span></button></div></article>
+          <article class="guest-room-card" data-room="suite"><div class="room-illustration suite-art"><span class="art-label">ROOM TO EXHALE</span><div class="art-bed"><i></i><b></b></div><div class="art-lamp"></div><div class="art-window"></div><div class="art-chair"></div></div><div class="guest-room-info"><div><span class="room-kicker">YOUR OWN LITTLE SALON</span><h3>Garden suite</h3><p>King bed · private terrace · 43 m²</p></div><div class="room-price"><strong>€310</strong><span>per night</span></div></div><div class="room-card-bottom"><span>Free cancellation · Breakfast optional</span><button class="choose-room" data-room-id="suite">Choose room <span>→</span></button></div></article>
+        </div>
+      </section>
+
+      <section class="details-strip" id="details"><span class="details-icon">✦</span><div><strong>A softer sort of stay.</strong><p>Thoughtful hospitality, neighbourhood recommendations, and breakfast worth waking up for.</p></div><a href="#rooms">Explore your stay <span>↗</span></a></section>
+      <footer class="guest-footer"><a class="guest-brand" href="book.html"><span class="guest-brand-mark">M</span><span>MAISON <b>VERDAN</b></span></a><span>18 Rue des Martyrs · Paris, France</span><span>© 2026 Maison Verdan</span></footer>
+    </main>
+
+    <div class="guest-modal-backdrop" id="guestModal" aria-hidden="true">
+      <section class="guest-modal" role="dialog" aria-modal="true" aria-labelledby="guestModalTitle">
+        <button class="guest-modal-close" id="guestModalClose" aria-label="Close">×</button>
+        <div class="guest-booking-step" id="guestBookingStep">
+          <p class="guest-overline">A FEW DETAILS</p><h2 id="guestModalTitle">Make it yours.</h2><p class="guest-modal-subtitle" id="selectedRoomSummary">A lovely room is waiting.</p>
+          <div class="booking-summary"><span id="summaryDates">Your dates</span><span id="summaryGuests">2 guests</span><strong id="summaryTotal">€0</strong></div>
+          <form id="guestBookingForm" class="guest-booking-form">
+            <label><span>Your name</span><input name="guest" autocomplete="name" placeholder="Camille Martin" required /></label>
+            <label><span>Email address</span><input name="email" type="email" autocomplete="email" placeholder="camille@email.com" required /></label>
+            <label class="special-request"><span>Anything we should know? <small>OPTIONAL</small></span><textarea name="note" rows="2" placeholder="A little note for our team"></textarea></label>
+            <p class="no-payment-note"><span>✓</span> No payment is collected in this demo.</p>
+            <button class="confirm-booking-button" type="submit">Confirm my stay <span>→</span></button>
+          </form>
+        </div>
+        <div class="guest-success-step" id="guestSuccessStep" hidden>
+          <div class="success-mark">✓</div><p class="guest-overline">CONFIRMED WITH CARE</p><h2>Paris is waiting.</h2><p>Thank you — your stay at Maison Verdan is in the books. We’ve saved your confirmation on this device.</p><div class="confirmation-ticket"><span>YOUR CONFIRMATION</span><strong id="confirmationCode">MV-000000</strong><small id="confirmationDetails"></small></div><button class="confirm-booking-button" id="doneBooking">Lovely, thank you</button>
+        </div>
+      </section>
+    </div>
+    <div class="guest-toast" id="guestToast" role="status" aria-live="polite"></div>
+    <script src="booking.js"></script>
+  </body>
+</html>
