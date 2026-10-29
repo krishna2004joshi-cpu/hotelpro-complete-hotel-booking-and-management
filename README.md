@@ -1,37 +1,131 @@
 # HotelPro
 
-HotelPro is a responsive booking and hotel operations demo for a boutique property. It includes a customer-facing booking engine alongside the team's front desk, reservation, room inventory, guest, reporting, and messaging screens.
+HotelPro is a responsive hotel booking and operations platform built with React, Express, and MongoDB. The guest booking experience and hotel team workspace share a reservation, room, payment, and notification model. The public GitHub Pages site runs as a self-contained demo; connecting the API enables shared data, authentication, and payment integrations.
 
-## Run the demo
+## Demo
 
-This is a static front-end demo. Open `index.html` in a browser, or serve this folder with any static file server. No build step or dependency install is required.
+- **Live demo:** https://krishna2004joshi-cpu.github.io/hotelpro-complete-hotel-booking-and-management/
+- **Public repository:** https://github.com/krishna2004joshi-cpu/hotelpro-complete-hotel-booking-and-management
 
-## Demo features
+Use **Sign in → Explore a demo** to open the admin, hotel team, or guest experience. Demo bookings are saved in the current browser and do not collect payment. The demo is illustrative; it does not share data between browsers.
 
-- Daily snapshot for occupancy, in-house guests, revenue, and average daily rate
-- Revenue trend with week and month views
-- Reservation list with guest search and status filters
-- New reservation form with date validation and browser-local persistence
-- Guest booking page with stay search, room choices, and on-device confirmation
-- Direct guest bookings appear in the HotelPro reservation list in the same browser
-- Room availability and housekeeping overview with status filtering
-- Guest directory, inbox, reporting, and property settings screens
-- Responsive layouts for desktop, tablet, and mobile
+## Features
 
-New reservations are saved in this browser only. The sample property, bookings, guests, and metrics are illustrative. Authentication, a shared database, payment processing, live inventory sync, and OTA integrations are not connected in this demo.
+### Guest experience
 
-## Project structure
+- Room search by dates, occupancy, and category
+- Reservation creation with nightly totals and tax calculation
+- Stripe Checkout integration, plus a clearly marked development payment flow
+- Reservation history, cancellation requests, invoices, and post-stay reviews
+- Email verification, password reset, and guest service requests
 
-```text
-.
-├── index.html   # App structure and metadata
-├── styles.css   # Responsive design system and layouts
-├── app.js       # Demo data and operations interactions
-├── book.html    # Customer-facing booking page
-├── booking.css  # Booking page layout and room illustrations
-└── booking.js   # Availability and local booking confirmation
+### Hotel operations
+
+- Reservation arrivals, departures, check-in, and check-out
+- Room inventory, occupancy, room readiness, and housekeeping tasks
+- Guest service request assignment and status updates
+- Booking and payment records, review moderation, and operational reporting
+- Multiple properties, staff accounts, role-based permissions, and administrator audit history
+
+### Platform
+
+- React, React Router, Redux Toolkit, Axios, Bootstrap, Material UI, Recharts, and Socket.IO client
+- Express REST API, MongoDB/Mongoose, JWT sessions, bcrypt password hashing, and request validation
+- Email delivery through SMTP, card payments through Stripe, image uploads, and real-time notification events
+- GitHub Pages demo build, Docker Compose MongoDB for local use, and a Render API blueprint
+
+## Run locally
+
+Requirements: Node.js 22.12 or newer and Docker (or a MongoDB 7 server).
+
+```bash
+cp .env.example .env
+docker compose up -d mongo
+npm install
+npm run seed
+npm run dev
 ```
 
-## Publishing
+Open the client at `http://localhost:5173`. The API health endpoint is `http://localhost:5000/api/health`.
 
-The app can be hosted on any static web host. For GitHub Pages, set the repository's Pages source to GitHub Actions and use the included workflow.
+Seeded development accounts share this password: `HotelPro!Demo2026`.
+
+| Role | Email |
+| --- | --- |
+| Administrator | `admin@hotelpro.local` |
+| Hotel team | `staff@hotelpro.local` |
+| Guest | `guest@hotelpro.local` |
+
+The seed script creates a sample Paris property and room inventory. Add `SEED_SAMPLE_BOOKINGS=true` to `.env` before running `npm run seed` to add illustrative reservations and payments. The script is safe to run again and does not overwrite existing users or room records.
+
+## Environment
+
+Copy `.env.example` to `.env`. `MONGODB_URI` and a long random `JWT_SECRET` are required by the API. Email and Stripe variables are optional in local development. Without SMTP, verification/reset links are printed to the API terminal; without Stripe, local development exposes a no-charge test payment. Both shortcuts are disabled in production.
+
+`CLIENT_URL` is the client base URL used for email and payment redirects. `CLIENT_ORIGINS` is the comma-separated list of browser origins allowed by the API, without paths. For GitHub Pages, for example:
+
+```text
+CLIENT_URL=https://krishna2004joshi-cpu.github.io/hotelpro-complete-hotel-booking-and-management/
+CLIENT_ORIGINS=https://krishna2004joshi-cpu.github.io
+```
+
+Set `VITE_API_URL` at client build time to attach the React app to a deployed API. Keep secrets only in the API provider's environment settings; never add a `.env` file to Git.
+
+## Deploy
+
+### Public demo (GitHub Pages)
+
+The `Deploy demo to GitHub Pages` workflow builds the `client` workspace in demo mode whenever changes are pushed to `main`. It publishes `client/dist` to the repository's configured Pages site. The app uses a hash router and the repository subpath, so direct links work on GitHub Pages.
+
+### Full API (Render + MongoDB Atlas)
+
+1. Create a MongoDB Atlas database and configure its network access for your API host.
+2. In Render, create a Blueprint from this repository using `render.yaml`.
+3. Supply `MONGODB_URI`, `CLIENT_URL`, `CLIENT_ORIGINS`, SMTP settings, and Stripe secret values in the Render service environment. `JWT_SECRET` is generated by the blueprint.
+4. Set up a Stripe webhook to `https://<your-render-service>/api/payments/webhook` for `checkout.session.completed` and `checkout.session.async_payment_failed`; add its signing secret to `STRIPE_WEBHOOK_SECRET`.
+5. Deploy the client with `VITE_API_URL=https://<your-render-service>/api` if you want its UI to use the API. The repository's Pages build remains a no-charge demo.
+6. Run `npm run seed` against the deployed database only if you intentionally want sample data there. Production seed is blocked unless `ALLOW_DEMO_SEED=true` is explicitly set; rotate the sample passwords before exposing those accounts.
+
+The checked-in Pages demo works without an API and remains accessible at the URL above. To connect it to your Render API, set a repository Actions variable named `VITE_API_URL` to `https://<your-render-service>/api`; leave the variable unset for the self-contained demo. A live end-to-end deployment needs a MongoDB provider and the relevant email/payment credentials.
+
+## API overview
+
+All endpoints are under `/api`. Authenticated calls send `Authorization: Bearer <token>`.
+
+| Area | Endpoints |
+| --- | --- |
+| Auth | `/auth/register`, `/auth/verify-email`, `/auth/login`, `/auth/me`, `/auth/forgot-password`, `/auth/reset-password` |
+| Rooms | `GET /rooms`, `GET /rooms/:id`, staff/admin create and update, `/rooms/occupancy`, room image upload |
+| Reservations | `/bookings` search/list/create/detail, cancellation, invoice, staff check-in and check-out |
+| Payments | Stripe Checkout, Stripe webhook, development demo payment, payment list and refund request |
+| Hotel team | `/staff/bookings`, service requests, housekeeping tasks |
+| Admin | Dashboard summary, reports, users, properties, and audit logs |
+| Guest features | Notifications and post-checkout reviews |
+
+The full endpoint and model implementation is in `server/src`. Role checks are applied at route boundaries. A room's embedded booking calendar is updated atomically during booking creation to reject overlapping stays.
+
+## Verify locally
+
+```bash
+npm test
+npm run build
+```
+
+The API tests cover booking date/pricing rules and key health/auth HTTP behavior. Build output is generated in `client/dist` and is ignored by Git.
+
+## Structure
+
+```text
+client/                 React application and GitHub Pages build
+server/src/config/       MongoDB connection
+server/src/controllers/ REST handlers
+server/src/middleware/  Authentication, validation, and error responses
+server/src/models/      MongoDB schemas
+server/src/routes/      Versioned-by-prefix API routes
+server/src/services/    Email and notification services
+server/scripts/          Development seed data
+server/test/             API and booking-rule tests
+.github/workflows/       GitHub Pages build and deployment
+docker-compose.yml       Local MongoDB
+render.yaml              Render API blueprint
+```

@@ -1,0 +1,15 @@
+import { Router } from 'express';
+import { body, param } from 'express-validator';
+import { authenticate, authorize } from '../middleware/auth.js';
+import { validate } from '../middleware/validate.js';
+import { createHotel, dashboardSummary, listAuditLogs, listHotels, listUsers, reportData, updateUser } from '../controllers/adminController.js';
+const router = Router();
+router.use(authenticate, authorize('admin'));
+router.get('/dashboard', dashboardSummary);
+router.get('/reports', reportData);
+router.get('/users', listUsers);
+router.patch('/users/:id', [param('id').isMongoId(), body('role').optional().isIn(['guest', 'staff', 'admin']), body('isActive').optional().isBoolean(), body('hotel').optional({ nullable: true }).isMongoId(), body('name').optional().trim().isLength({ min: 2, max: 100 })], validate, updateUser);
+router.get('/hotels', listHotels);
+router.post('/hotels', [body('name').trim().isLength({ min: 2, max: 140 }), body('slug').trim().matches(/^[a-z0-9]+(?:-[a-z0-9]+)*$/), body('description').optional().trim().isLength({ max: 3000 }), body('currency').optional().isLength({ min: 3, max: 3 }), body('contactEmail').optional({ checkFalsy: true }).isEmail()], validate, createHotel);
+router.get('/audit-logs', listAuditLogs);
+export default router;

@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import { body, param } from 'express-validator';
+import { authenticate, authorize } from '../middleware/auth.js';
+import { validate } from '../middleware/validate.js';
+import { createReview, listReviews, moderateReview } from '../controllers/reviewController.js';
+const router = Router();
+router.get('/', listReviews);
+router.post('/', authenticate, authorize('guest'), [body('bookingId').isMongoId(), body('rating').isInt({ min: 1, max: 5 }), body('title').optional().trim().isLength({ max: 120 }), body('comment').optional().trim().isLength({ max: 2000 })], validate, createReview);
+router.patch('/:id/moderate', authenticate, authorize('admin'), [param('id').isMongoId(), body('isPublished').isBoolean().toBoolean()], validate, moderateReview);
+export default router;
